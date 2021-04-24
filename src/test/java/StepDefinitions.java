@@ -29,16 +29,16 @@ public class StepDefinitions {
 
     }
 
-    @When("^User enters valid credentials$")
-    public void user_enters_valid_credentials() throws Exception {
+    @When("^User enters valid \\\"([^\\\"]*)\\\" and \\\"([^\\\"]*)\\\"$")
+    public void user_enters_valid_credentials(String username, String password) throws Exception {
         wait.until(ExpectedConditions.presenceOfElementLocated (By.className("login")));
         WebElement btnLogin=driver.findElement(By.className("login"));
         btnLogin.click();
         Thread.sleep(1000);
         WebElement txtEmail=driver.findElement(By.id("email"));
-        txtEmail.sendKeys("testuser412@grr.la");
+        txtEmail.sendKeys(username);
         WebElement txtPassword=driver.findElement(By.id("passwd"));
-        txtPassword.sendKeys("2t8zmqzL");
+        txtPassword.sendKeys(password);
         Thread.sleep(1000);
         WebElement btnSubmitLogin=driver.findElement(By.id("SubmitLogin"));
         btnSubmitLogin.click();

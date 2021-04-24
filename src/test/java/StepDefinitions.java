@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.Login;
 
 import java.io.IOException;
 
@@ -32,16 +33,8 @@ public class StepDefinitions {
     @When("^User enters valid \\\"([^\\\"]*)\\\" and \\\"([^\\\"]*)\\\"$")
     public void user_enters_valid_credentials(String username, String password) throws Exception {
         wait.until(ExpectedConditions.presenceOfElementLocated (By.className("login")));
-        WebElement btnLogin=driver.findElement(By.className("login"));
-        btnLogin.click();
-        Thread.sleep(1000);
-        WebElement txtEmail=driver.findElement(By.id("email"));
-        txtEmail.sendKeys(username);
-        WebElement txtPassword=driver.findElement(By.id("passwd"));
-        txtPassword.sendKeys(password);
-        Thread.sleep(1000);
-        WebElement btnSubmitLogin=driver.findElement(By.id("SubmitLogin"));
-        btnSubmitLogin.click();
+        Login login=new Login(driver);
+        login.doLogin(username,password);
     }
 
     @Then("^User can logged in successfully$")

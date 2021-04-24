@@ -4,5 +4,5 @@
 2. Clone this project
 3. Open pom.xml as project by IntellIJ
 4. Give this command:
-```mvn clean install
+``` mvn clean install
 ```
